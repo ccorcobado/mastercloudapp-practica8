@@ -3,7 +3,7 @@ package es.urjccode.mastercloudapps.adcs.draughts.views;
 import es.urjccode.mastercloudapps.adcs.draughts.utils.Console;
 import es.urjccode.mastercloudapps.adcs.draughts.models.Error;
 
-public class ErrorView {
+class ErrorView {
 
     static final String[] MESSAGES = {
         "No te entiendo: <d><d>{,<d><d>}[0-2] o -1 para rendirte",
@@ -21,11 +21,11 @@ public class ErrorView {
     Error error;
     private static Console console = new Console();
 
-    public ErrorView(Error error) {
+    ErrorView(Error error) {
         this.error = error;
     }
 
-    public void writeln() {
+    void writeln() {
         ErrorView.console.writeln("Error!!! " + ErrorView.MESSAGES[this.error.ordinal()]);
     }
 
