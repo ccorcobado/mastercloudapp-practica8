@@ -16,6 +16,11 @@ class Draught extends Piece {
         }
         return null;
     }
+    
+    @Override
+    Coordinate betweenDiagonal(Coordinate origin, Coordinate target) {
+        return origin.lastBetweenDiagonal(target);
+    }
 
     @Override
     boolean isEatingJump(Coordinate origin, Coordinate target) {

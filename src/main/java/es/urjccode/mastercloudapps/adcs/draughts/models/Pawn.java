@@ -35,6 +35,11 @@ class Pawn extends Piece {
     boolean isEatingJump(Coordinate origin, Coordinate target) {
         return origin.diagonalDistance(target) == 2;
     }
+    
+    @Override
+    Coordinate betweenDiagonal(Coordinate origin, Coordinate target) {
+        return origin.betweenDiagonal(target);
+    }
 
     boolean isAdvanced(Coordinate origin, Coordinate target) {
         assert origin != null;

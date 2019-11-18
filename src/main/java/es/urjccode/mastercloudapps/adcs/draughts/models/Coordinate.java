@@ -18,15 +18,23 @@ public class Coordinate {
             int value = Integer.parseInt(format);
             int row = value / 10 - 1;
             int column = value % 10 - 1;
-            if (row < Coordinate.LOWER_LIMIT || Coordinate.UPPER_LIMIT < row
-                    || column < Coordinate.LOWER_LIMIT || Coordinate.UPPER_LIMIT < column) {
+            if (isValid(row, column))
+                return new Coordinate(row, column);
+            else
                 return null;
-            }
-            return new Coordinate(row, column);
 
         } catch (Exception ex) {
             return null;
         }
+    }
+    
+    public static boolean isValid(int row, int column) {
+        return Coordinate.LOWER_LIMIT <= row && row <= Coordinate.UPPER_LIMIT && Coordinate.LOWER_LIMIT <= column
+                && column <= Coordinate.UPPER_LIMIT;
+    }
+    
+    boolean isValid() {
+        return isValid(this.row, this.column);
     }
     
     boolean isDiagonal(Coordinate coordinate) {
@@ -53,6 +61,14 @@ public class Coordinate {
             columnShift = -1;
         }
         return new Coordinate(this.row + rowShift, this.column + columnShift);
+    }
+    
+    public Coordinate lastBetweenDiagonal(Coordinate coordinate) {
+        assert coordinate != null && coordinate.isValid();
+        assert this.isValid();
+        int rowShift = (coordinate.row - this.row < 0)? 1 : -1;
+        int columnShift = (coordinate.column - this.column < 0)? 1 : -1;
+        return new Coordinate(coordinate.row + rowShift, coordinate.column + columnShift);
     }
 
     boolean isBlack() {
