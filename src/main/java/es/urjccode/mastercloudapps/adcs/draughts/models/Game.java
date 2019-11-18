@@ -23,7 +23,7 @@ public class Game {
         this.board = board;
     }
 
-    private Piece getInitialPiece(Coordinate coordinate) {
+    private Pawn getInitialPiece(Coordinate coordinate) {
         assert coordinate != null;
         if (coordinate.isBlack()) {
             final int row = coordinate.getRow();
@@ -34,7 +34,7 @@ public class Game {
                 color = Color.WHITE;
             }
             if (color != null) {
-                return new Piece(color);
+                return new Pawn(color);
             }
         }
         return null;
