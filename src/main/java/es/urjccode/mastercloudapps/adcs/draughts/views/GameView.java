@@ -3,8 +3,9 @@ package es.urjccode.mastercloudapps.adcs.draughts.views;
 import es.urjccode.mastercloudapps.adcs.draughts.controllers.Controller;
 import es.urjccode.mastercloudapps.adcs.draughts.models.Color;
 import es.urjccode.mastercloudapps.adcs.draughts.models.Coordinate;
+import es.urjccode.mastercloudapps.adcs.draughts.utils.WithConsoleView;
 
-class GameView extends SubView {
+class GameView extends WithConsoleView {
 
     void write(Controller controller) {
         assert controller != null;

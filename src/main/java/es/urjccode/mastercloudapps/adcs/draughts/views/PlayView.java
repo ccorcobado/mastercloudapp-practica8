@@ -3,8 +3,9 @@ package es.urjccode.mastercloudapps.adcs.draughts.views;
 import es.urjccode.mastercloudapps.adcs.draughts.controllers.PlayController;
 import es.urjccode.mastercloudapps.adcs.draughts.models.Error;
 import es.urjccode.mastercloudapps.adcs.draughts.models.Coordinate;
+import es.urjccode.mastercloudapps.adcs.draughts.utils.WithConsoleView;
 
-class PlayView extends SubView {
+class PlayView extends WithConsoleView {
 
     private static final String FORMAT = "xx.xx";
 
