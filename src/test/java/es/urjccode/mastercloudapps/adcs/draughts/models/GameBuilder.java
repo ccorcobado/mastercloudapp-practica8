@@ -35,9 +35,11 @@ public class GameBuilder {
     }
     
     private void putPiece(char charPiece, int row, int col){
-        Map<Character, Piece> pieces = new HashMap<Character, Piece>(); 
-        pieces.put('b', new Piece(Color.WHITE));
-        pieces.put('n', new Piece(Color.BLACK));
+        Map<Character, Piece> pieces = new HashMap<>(); 
+        pieces.put('b', new Pawn(Color.WHITE));
+        pieces.put('n', new Pawn(Color.BLACK));
+        pieces.put('B', new Draught(Color.WHITE));
+        pieces.put('N', new Draught(Color.BLACK));
         this.board.putPiece(new Coordinate(row,col), pieces.get(charPiece));
     }
 }
