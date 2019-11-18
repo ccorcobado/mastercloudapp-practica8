@@ -6,7 +6,8 @@ public enum MessageView {
     
     TITLE("Draughts"),
     OTHER_GAME("¿Queréis jugar otra"),
-    LOSE("Derrota!!! No puedes mover tus fichas!!!");
+    LOSE("Derrota!!! No puedes mover tus fichas!!!"),
+    CANCEL("¿Quieres cancelar?");
     
     private final String message;
     private final Console console;

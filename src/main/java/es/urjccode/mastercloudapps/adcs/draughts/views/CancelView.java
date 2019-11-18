@@ -12,6 +12,6 @@ public class CancelView {
     }
     
     public void confirm(CancelController cancelController) {
-        cancelController.cancel(this.yesNoDialog.read("¿Quieres cancelar?"));
+        cancelController.cancel(this.yesNoDialog.read(MessageView.CANCEL.getMessage()));
     }
 }
