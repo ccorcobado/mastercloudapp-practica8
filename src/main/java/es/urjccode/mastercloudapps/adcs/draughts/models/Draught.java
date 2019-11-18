@@ -8,7 +8,13 @@ class Draught extends Piece {
 
     @Override
     Error isCorrect(Coordinate origin, Coordinate target, PieceProvider pieceProvider) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (!origin.isDiagonal(target)) {
+            return Error.NOT_DIAGONAL;
+        }
+        if (!pieceProvider.isEmpty(target)) {
+            return Error.NOT_EMPTY_TARGET;
+        }
+        return null;
     }
-    
+
 }
