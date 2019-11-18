@@ -2,6 +2,7 @@ package es.urjccode.mastercloudapps.adcs.draughts.models;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class GameTest {
@@ -117,4 +118,41 @@ public class GameTest {
         assertEquals(Error.BAD_DISTANCE,
             this.game.isCorrect(new Coordinate(7, 3), new Coordinate(4, 6)));
     }
+    
+    @Test
+    public void givenGameWhenNoMorePiecesThenBlocked() {
+        Game game = new GameBuilder()
+            .row("        ")
+            .row("        ")
+            .row("  b     ")
+            .row("        ")
+            .row("     b  ")
+            .row("        ")
+            .row("        ")
+            .row("  b     ")
+            .build();
+        
+        game.nextTurn();
+        assertTrue(game.isBlocked());
+    }
+    
+    @Test
+    public void givenGameWhenNoMovablePiecesThenBlocked() {
+        Game game = new GameBuilder()
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("   n    ")
+            .row("        ")
+            .row(" n      ")
+            .row("b       ")
+            .build();
+        Coordinate originWhite = new Coordinate(4, 3);
+        Coordinate targetWhite = new Coordinate(5, 2);
+        game.nextTurn();
+        game.move(originWhite, targetWhite);
+        assertTrue(game.isBlocked());
+    }
+
 }
