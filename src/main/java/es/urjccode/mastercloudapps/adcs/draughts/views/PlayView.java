@@ -49,6 +49,7 @@ class PlayView extends WithConsoleView {
     String readCommand(String color, PlayController playController) {
         assert color != null;
         assert playController != null;
+        
         Error error;
         String command;
         do {
@@ -57,7 +58,7 @@ class PlayView extends WithConsoleView {
             if (command.matches(CANCEL_COMMAND)) {
                 break;
             }
-            if (!command.matches(FORMAT_COMMAND)) {
+            else if (!command.matches(FORMAT_COMMAND)) {
                 error = Error.BAD_FORMAT;
                 writeMessageError(error, playController);
             }

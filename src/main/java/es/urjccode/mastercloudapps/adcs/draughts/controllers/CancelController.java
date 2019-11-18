@@ -12,7 +12,7 @@ public class CancelController {
     }
     
     public void cancelGame() {
-        new CancelView().confirm(this);		
+        new CancelView().confirm(this);
     }
 
     public void cancel(boolean cancel) {
