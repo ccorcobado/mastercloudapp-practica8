@@ -46,4 +46,8 @@ public class PlayController extends Controller {
         controllersVisitor.visit(this);
     }
 
+    public void cancelGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

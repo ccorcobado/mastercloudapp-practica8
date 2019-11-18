@@ -30,6 +30,9 @@ public class PlayViewTest {
     
     @Mock
     ErrorView errorView;
+    
+//    @Mock
+//    ColorView colorView;
 
     @InjectMocks
     PlayView playView;
@@ -70,4 +73,13 @@ public class PlayViewTest {
         playView.interact(playController);
         verify(playController).move(new Coordinate(2, 1), new Coordinate(3, 0));
     }
+    
+    @Test()
+    public void givenPlayViewWhenCancelCommandThenNextState() {
+        when(playController.getColor()).thenReturn(Color.BLACK);
+        when(console.readString("Mueven las negras: ")).thenReturn("cancel");
+        playView.interact(playController);
+        verify(playController).cancelGame();
+    }
+
 }
