@@ -36,7 +36,7 @@ public class CancelViewTest {
 
     @Test
     public void givenCancelViewWhenUserWantsCancelThenNextState() {
-        when(yesNoDialog.read("¿Quieres cancelar")).thenReturn(true);
+        when(yesNoDialog.read("¿Quieres cancelar?")).thenReturn(true);
         cancelView.confirm(cancelController);
         verify(cancelController).cancel(true);
     }
