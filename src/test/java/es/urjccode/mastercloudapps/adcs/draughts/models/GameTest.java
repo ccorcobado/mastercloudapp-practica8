@@ -12,9 +12,9 @@ public class GameTest {
         game = new GameBuilder()
             .row(" n      ")
             .row("        ")
-            .row("  b   n ")
+            .row("  b     ")
             .row("    n   ")
-            .row("   b   b")
+            .row("   b    ")
             .row("  b     ")
             .row("        ")            
             .row("   b    ")
@@ -47,22 +47,6 @@ public class GameTest {
             }
         }
     }
-
-//    private Error advance(Coordinate[][] coordinates){
-//        Error error = null;
-//        System.out.println(game);
-//        for (int i = 0; i < coordinates.length; i++) {
-//            assertNull(error);
-//            error = game.isCorrect(coordinates[i][0], coordinates[i][1]);
-//            if (error == null){
-//                game.move(coordinates[i][0], coordinates[i][1]);
-//                System.out.println(game);
-//            } else {
-//                return error;
-//            }
-//        }
-//        return error;
-//    }
 
     @Test
     public void testGivenGameWhenMoveEmptySquaerThenEmptySquareError() {
@@ -133,5 +117,4 @@ public class GameTest {
         assertEquals(Error.BAD_DISTANCE,
             this.game.isCorrect(new Coordinate(7, 3), new Coordinate(4, 6)));
     }
-
 }
