@@ -47,6 +47,8 @@ class PlayView extends WithConsoleView {
     }
     
     String readCommand(String color, PlayController playController) {
+        assert color != null;
+        assert playController != null;
         Error error;
         String command;
         do {

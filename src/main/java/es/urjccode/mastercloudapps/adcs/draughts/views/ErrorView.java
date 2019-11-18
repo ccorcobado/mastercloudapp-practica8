@@ -6,7 +6,7 @@ import es.urjccode.mastercloudapps.adcs.draughts.models.Error;
 class ErrorView {
 
     static final String[] MESSAGES = {
-        "No te entiendo: <d><d>{,<d><d>}[0-2]",
+        "No te entiendo: <d><d>{,<d><d>}[0-2] o pulsa 'cancel' para terminar la partida",
         "No es una coordenada del tablero",
         "No hay ficha que mover",
         "No es una de tus fichas",

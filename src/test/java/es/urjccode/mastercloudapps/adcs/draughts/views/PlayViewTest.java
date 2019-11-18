@@ -35,9 +35,6 @@ public class PlayViewTest {
     @Mock
     CancelView cancelView;
 
-    @Mock
-    YesNoDialog yesnoDialog;
-    
     @InjectMocks
     PlayView playView;
 
