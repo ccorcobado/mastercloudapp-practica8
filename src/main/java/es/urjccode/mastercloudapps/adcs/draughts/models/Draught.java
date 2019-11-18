@@ -6,4 +6,9 @@ class Draught extends Piece {
         super(color);
     }
 
+    @Override
+    Error isCorrect(Coordinate origin, Coordinate target, PieceProvider pieceProvider) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
