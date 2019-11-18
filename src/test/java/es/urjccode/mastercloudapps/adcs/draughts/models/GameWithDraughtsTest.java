@@ -1,5 +1,6 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -14,9 +15,9 @@ public class GameWithDraughtsTest {
             .row("       B")
             .row(" b n    ")
             .row("  b     ")
-            .row("    n   ")
+            .row("  b n   ")
             .row("        ")
-            .row("     n  ")
+            .row("N    n  ")
             .row("    b n ")
             .row("N       ")
             .build();
@@ -41,16 +42,18 @@ public class GameWithDraughtsTest {
         assertNull(game.getPiece(origin));
     }
     
-//    @Test
-//    public void givenGameWhenWhiteDraughtEatThenOk(){
-//        Coordinate origin = new Coordinate(0,7);
-//        Coordinate target = new Coordinate(6,1);
-//        Coordinate middle = new Coordinate(3,4);
-//        game.move(origin, target);
-//        assertTrue(game.getPiece(target) instanceof Draught);
-//        assertNull(game.getPiece(origin));
-//        assertNull(game.getPiece(middle));
-//    }
+    @Test
+    public void givenGameWhenWhiteDraughtEatThenOk(){
+        Coordinate origin = new Coordinate(0,7);
+        Coordinate target = new Coordinate(4,3);
+        Coordinate middle = new Coordinate(3,4);
+        assertNotNull(game.getPiece(middle));
+        game.move(origin, target);
+        assertNull(game.getPiece(middle));
+        assertNull(game.getPiece(origin));
+        assertNotNull(game.getPiece(target));
+        assertTrue(game.getPiece(target) instanceof Draught);
+    }
     
     @Test
     public void testGivenGameWhenWhitePawnAtLimitThenNewDraugts(){
