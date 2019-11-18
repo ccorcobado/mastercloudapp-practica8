@@ -28,7 +28,7 @@ public class CancelControllerTest {
     }
 
     @Test
-    public void testGivenCancelControllerWhenCancelGameThenStateIsFinalState() {
+    public void givenCancelControllerWhenCancelGameThenStateIsFinalState() {
         when(state.getValueState()).thenReturn(StateValue.FINAL);
         cancelController.cancel(true);
         assertEquals(StateValue.FINAL,state.getValueState());
