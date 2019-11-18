@@ -11,23 +11,24 @@ public class GameWithDraughtsTest {
     
     public GameWithDraughtsTest() {
         game = new GameBuilder()
-            .row("        ")
+            .row("       B")
             .row(" b n    ")
             .row("  b     ")
-            .row("        ")
+            .row("    n   ")
             .row("        ")
             .row("     n  ")
             .row("    b n ")
-            .row("        ")
+            .row("N       ")
             .build();
-    }
-
+    }    
+    
     @Test
     public void testGivenGameWhenWhitePawnAtLimitThenNewDraugts(){
         Coordinate origin = new Coordinate(1,1);
         Coordinate target = new Coordinate(0,0);
         game.move(origin, target);
         assertTrue(game.getPiece(target) instanceof Draught);
+        assertTrue(game.getPiece(target).getColor() == Color.WHITE);
         assertNull(game.getPiece(origin));
     }
 
@@ -37,22 +38,18 @@ public class GameWithDraughtsTest {
         Coordinate target = new Coordinate(0,4);
         game.move(origin, target);
         assertTrue(game.getPiece(target) instanceof Draught);
+        assertTrue(game.getPiece(target).getColor() == Color.WHITE);
         assertNull(game.getPiece(origin));
     }
     
-    private Turn BlackTurn() {
-        Turn turn = new Turn();
-        turn.change();
-        return turn;
-    }
-
     @Test
     public void testGivenGameWhenBlackPawnAtLimitThenNewDraugts(){
         Coordinate origin = new Coordinate(6,6);
         Coordinate target = new Coordinate(7,7);
-        game.setTurn(this.BlackTurn());
+        game.nextTurn();
         game.move(origin, target);
         assertTrue(game.getPiece(target) instanceof Draught);
+        assertTrue(game.getPiece(target).getColor() == Color.BLACK);
         assertNull(game.getPiece(origin));
     }
     
@@ -60,9 +57,10 @@ public class GameWithDraughtsTest {
     public void testGivenGameWhenBlackPawnAtLimitAndEatingThenNewDraugts(){
         Coordinate origin = new Coordinate(5,5);
         Coordinate target = new Coordinate(7,3);
-        game.setTurn(this.BlackTurn());
+        game.nextTurn();
         game.move(origin, target);
         assertTrue(game.getPiece(target) instanceof Draught);
+        assertTrue(game.getPiece(target).getColor() == Color.BLACK);
         assertNull(game.getPiece(origin));
     }
 }

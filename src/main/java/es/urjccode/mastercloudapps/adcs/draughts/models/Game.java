@@ -23,8 +23,8 @@ public class Game {
         this.board = board;
     }
     
-    void setTurn(Turn turn) {
-        this.turn = turn;
+    void nextTurn() {
+        this.turn.change();
     }
 
     private Pawn getInitialPiece(Coordinate coordinate) {
@@ -52,9 +52,9 @@ public class Game {
         this.board.move(origin, target);
         if (this.board.getPiece(target).isLimit(target)) {
             this.board.remove(target);
-            this.board.put(target, new Draught(Color.WHITE));
+            this.board.put(target, new Draught(this.turn.getColor()));
         }
-        this.turn.change();
+        this.nextTurn();
     }
 
     public Error isCorrect(Coordinate origin, Coordinate target) {
