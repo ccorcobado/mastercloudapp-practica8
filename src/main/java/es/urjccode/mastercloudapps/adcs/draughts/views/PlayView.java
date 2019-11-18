@@ -53,7 +53,7 @@ class PlayView extends WithConsoleView {
     private void writeMessageError(Error error, PlayController playController) {
         assert error != null;
         assert playController != null;
-        this.console.writeln("Error!!!" + error.name());
+        new ErrorView(error).writeln();
         this.gameView.write(playController);
     }
     
