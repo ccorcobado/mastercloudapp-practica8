@@ -60,6 +60,11 @@ class Board implements PieceProvider {
         return pieces;
     }
 
+    void putPiece(Coordinate coordinate, Piece piece) {
+        assert piece != null;
+        this.getSquare(coordinate).put(piece);
+    }
+
     int getDimension() {
         return Board.DIMENSION;
     }

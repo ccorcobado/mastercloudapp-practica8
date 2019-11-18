@@ -88,4 +88,8 @@ public class Game {
         return this.board + "\n" + this.turn;
     }
 
+    void setBoard(Board board) {
+        this.board = board;
+    }
+
 }
