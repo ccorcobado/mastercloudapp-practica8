@@ -19,7 +19,7 @@ class Draught extends Piece {
     
     @Override
     Coordinate betweenDiagonal(Coordinate origin, Coordinate target) {
-        return origin.lastBetweenDiagonal(target);
+        return origin.betweenDiagonal(target);
     }
 
     @Override
