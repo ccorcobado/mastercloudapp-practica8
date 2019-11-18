@@ -23,7 +23,7 @@ public class GameWithDraughtsTest {
     }
     
     @Test
-    public void givenGameWhenWhiteDraughtMoveBackThenOk() {
+    public void givenGameWhenWhiteDraughtMoveBack1PositionThenOk() {
         Coordinate origin = new Coordinate(0,7);
         Coordinate target = new Coordinate(1,6);
         game.move(origin, target);
@@ -32,7 +32,16 @@ public class GameWithDraughtsTest {
     }
     
     @Test
-    public void givenGameWhenBlackDraughtMoveBackThenOk() {
+    public void givenGameWhenWhiteDraughtMoveBackNPositionThenOk() {
+        Coordinate origin = new Coordinate(0,7);
+        Coordinate target = new Coordinate(2,5);
+        game.move(origin, target);
+        assertTrue(game.getPiece(target) instanceof Draught);
+        assertNull(game.getPiece(origin));
+    }
+    
+    @Test
+    public void givenGameWhenBlackDraughtMoveBack1PositionThenOk() {
         Coordinate origin = new Coordinate(7,0);
         Coordinate target = new Coordinate(6,1);
         game.nextTurn();
@@ -42,15 +51,25 @@ public class GameWithDraughtsTest {
     }
     
     @Test
-    public void givenGameWhenWhiteDraughtEatThenOk(){
-        Coordinate origin = new Coordinate(0,7);
-        Coordinate target = new Coordinate(6,1);
-        Coordinate middle = new Coordinate(3,4);
+    public void givenGameWhenBlackDraughtMoveBackNPositionThenOk() {
+        Coordinate origin = new Coordinate(7,0);
+        Coordinate target = new Coordinate(5,2);
+        game.nextTurn();
         game.move(origin, target);
         assertTrue(game.getPiece(target) instanceof Draught);
         assertNull(game.getPiece(origin));
-        assertNull(game.getPiece(middle));
     }
+    
+//    @Test
+//    public void givenGameWhenWhiteDraughtEatThenOk(){
+//        Coordinate origin = new Coordinate(0,7);
+//        Coordinate target = new Coordinate(6,1);
+//        Coordinate middle = new Coordinate(3,4);
+//        game.move(origin, target);
+//        assertTrue(game.getPiece(target) instanceof Draught);
+//        assertNull(game.getPiece(origin));
+//        assertNull(game.getPiece(middle));
+//    }
     
     @Test
     public void testGivenGameWhenWhitePawnAtLimitThenNewDraugts(){
