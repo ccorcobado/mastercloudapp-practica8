@@ -22,6 +22,10 @@ public class Game {
     void setBoard(Board board) {
         this.board = board;
     }
+    
+    void setTurn(Turn turn) {
+        this.turn = turn;
+    }
 
     private Pawn getInitialPiece(Coordinate coordinate) {
         assert coordinate != null;

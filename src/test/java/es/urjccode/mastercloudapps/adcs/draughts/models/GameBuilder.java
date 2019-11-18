@@ -19,9 +19,14 @@ public class GameBuilder {
         return this;
     }
 
-    Game build(){
+    Game build() {
+        return this.build(new Turn());
+    }
+    
+    Game build(Turn turn){
         this.board = new Board();
         Game game = new Game();
+        game.setTurn(turn);
         for (int row = 0 ; row < this.boardList.size() ; row++) {
             String boardString = this.boardList.get(row);
             for (int col = 0; col < boardString.length(); col++){
