@@ -7,7 +7,6 @@ import es.urjccode.mastercloudapps.adcs.draughts.utils.WithConsoleView;
 
 class PlayView extends WithConsoleView {
 
-    private static final String FORMAT = "xx.xx";
     private static final String FORMAT_COMMAND = "([0-9]{2,2})+(?:[.][0-9]{2,2})$";
 
     private GameView gameView;
@@ -27,8 +26,8 @@ class PlayView extends WithConsoleView {
         
         do {
             String command = this.readCommand(color, playController);
-            origin = Coordinate.getInstance(command.substring(0, 2));
-            target = Coordinate.getInstance(command.substring(3, 5));
+            origin = Coordinate.origin(command);
+            target = Coordinate.target(command);
             error = playController.isCorrect(origin, target);
             if (error == null) 
                 playController.move(origin, target);
@@ -50,11 +49,8 @@ class PlayView extends WithConsoleView {
                 writeMessageError(error, playController);
             }
             else {
-                Coordinate origin = Coordinate.getInstance(command.substring(0, 2));
-                Coordinate target = Coordinate.getInstance(command.substring(3, 5));
-
-                if (origin == null || target == null) {
-                    error = Error.BAD_FORMAT;
+                if (Coordinate.origin(command) == null || Coordinate.target(command) == null) {
+                    error = Error.OUT_RANGE;
                     writeMessageError(error, playController);
                 }
             }
