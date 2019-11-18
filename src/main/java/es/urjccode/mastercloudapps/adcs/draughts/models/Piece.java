@@ -11,6 +11,8 @@ public abstract class Piece {
 
     abstract Error isCorrect(Coordinate origin, Coordinate target, PieceProvider pieceProvider);
 
+    abstract boolean isEatingJump(Coordinate origin, Coordinate target);
+    
     boolean isLimit(Coordinate coordinate) {
         return coordinate.getRow() == 0 && this.getColor() == Color.WHITE
                 || coordinate.getRow() == 7 && this.getColor() == Color.BLACK;

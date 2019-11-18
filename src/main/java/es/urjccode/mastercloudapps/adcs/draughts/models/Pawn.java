@@ -32,9 +32,8 @@ class Pawn extends Piece {
     }
 
     @Override
-    boolean isLimit(Coordinate coordinate) {
-        return coordinate.getRow() == 0 && this.getColor() == Color.WHITE
-                || coordinate.getRow() == 7 && this.getColor() == Color.BLACK;
+    boolean isEatingJump(Coordinate origin, Coordinate target) {
+        return origin.diagonalDistance(target) == 2;
     }
 
     boolean isAdvanced(Coordinate origin, Coordinate target) {

@@ -34,6 +34,11 @@ class Board implements PieceProvider {
 
     void move(Coordinate origin, Coordinate target) {
         this.put(target, this.remove(origin));
+        Piece piece = this.getPiece(target);
+        if (piece.isLimit(target)) {
+            this.remove(target);
+            this.put(target, new Draught(piece.getColor()));
+        }
     }
 
     @Override

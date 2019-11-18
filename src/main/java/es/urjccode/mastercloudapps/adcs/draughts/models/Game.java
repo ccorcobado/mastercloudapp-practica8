@@ -46,14 +46,12 @@ public class Game {
 
     public void move(Coordinate origin, Coordinate target) {
         assert this.isCorrect(origin, target) == null;
-        if (origin.diagonalDistance(target) == 2) {
+        
+        Piece piece = this.board.getPiece(origin);
+        if (piece.isEatingJump(origin, target)) {        
             this.board.remove(origin.betweenDiagonal(target));
         }
         this.board.move(origin, target);
-        if (this.board.getPiece(target).isLimit(target)) {
-            this.board.remove(target);
-            this.board.put(target, new Draught(this.turn.getColor()));
-        }
         this.nextTurn();
     }
 

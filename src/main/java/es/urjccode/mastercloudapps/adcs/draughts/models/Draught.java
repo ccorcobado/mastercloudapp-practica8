@@ -17,4 +17,8 @@ class Draught extends Piece {
         return null;
     }
 
+    @Override
+    boolean isEatingJump(Coordinate origin, Coordinate target) {
+        return origin.diagonalDistance(target) > 1;
+    }
 }
