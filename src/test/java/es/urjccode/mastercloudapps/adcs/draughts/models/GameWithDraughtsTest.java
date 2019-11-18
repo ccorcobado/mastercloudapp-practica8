@@ -20,7 +20,37 @@ public class GameWithDraughtsTest {
             .row("    b n ")
             .row("N       ")
             .build();
-    }    
+    }
+    
+    @Test
+    public void givenGameWhenWhiteDraughtMoveBackThenOk() {
+        Coordinate origin = new Coordinate(0,7);
+        Coordinate target = new Coordinate(1,6);
+        game.move(origin, target);
+        assertTrue(game.getPiece(target) instanceof Draught);
+        assertNull(game.getPiece(origin));
+    }
+    
+    @Test
+    public void givenGameWhenBlackDraughtMoveBackThenOk() {
+        Coordinate origin = new Coordinate(7,0);
+        Coordinate target = new Coordinate(6,1);
+        game.nextTurn();
+        game.move(origin, target);
+        assertTrue(game.getPiece(target) instanceof Draught);
+        assertNull(game.getPiece(origin));
+    }
+    
+    @Test
+    public void givenGameWhenWhiteDraughtEatThenOk(){
+        Coordinate origin = new Coordinate(0,7);
+        Coordinate target = new Coordinate(6,1);
+        Coordinate middle = new Coordinate(3,4);
+        game.move(origin, target);
+        assertTrue(game.getPiece(target) instanceof Draught);
+        assertNull(game.getPiece(origin));
+        assertNull(game.getPiece(middle));
+    }
     
     @Test
     public void testGivenGameWhenWhitePawnAtLimitThenNewDraugts(){
