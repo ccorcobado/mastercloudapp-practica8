@@ -16,8 +16,8 @@ public class GameWithDraughtsTest {
             .row("  b     ")
             .row("        ")
             .row("        ")
-            .row("        ")
-            .row("      n ")
+            .row("     n  ")
+            .row("    b n ")
             .row("        ")
             .build();
     }
@@ -32,21 +32,35 @@ public class GameWithDraughtsTest {
     }
 
     @Test
-    public void testGivenGameWhenPawnAtLimitAndEatingThenNewDraugts(){
+    public void testGivenGameWhenWhitePawnAtLimitAndEatingThenNewDraugts(){
         Coordinate origin = new Coordinate(2,2);
         Coordinate target = new Coordinate(0,4);
         game.move(origin, target);
         assertTrue(game.getPiece(target) instanceof Draught);
         assertNull(game.getPiece(origin));
     }
+    
+    private Turn BlackTurn() {
+        Turn turn = new Turn();
+        turn.change();
+        return turn;
+    }
 
     @Test
     public void testGivenGameWhenBlackPawnAtLimitThenNewDraugts(){
         Coordinate origin = new Coordinate(6,6);
         Coordinate target = new Coordinate(7,7);
-        Turn turn = new Turn();
-        turn.change();
-        game.setTurn(turn);
+        game.setTurn(this.BlackTurn());
+        game.move(origin, target);
+        assertTrue(game.getPiece(target) instanceof Draught);
+        assertNull(game.getPiece(origin));
+    }
+    
+    @Test
+    public void testGivenGameWhenBlackPawnAtLimitAndEatingThenNewDraugts(){
+        Coordinate origin = new Coordinate(5,5);
+        Coordinate target = new Coordinate(7,3);
+        game.setTurn(this.BlackTurn());
         game.move(origin, target);
         assertTrue(game.getPiece(target) instanceof Draught);
         assertNull(game.getPiece(origin));
