@@ -7,6 +7,7 @@ import es.urjccode.mastercloudapps.adcs.draughts.utils.WithConsoleView;
 
 class PlayView extends WithConsoleView {
 
+    private static final String CANCEL_COMMAND = "cancel";
     private static final String FORMAT_COMMAND = "([0-9]{2,2})+(?:[.][0-9]{2,2})$";
 
     private GameView gameView;
@@ -25,14 +26,21 @@ class PlayView extends WithConsoleView {
         Error error;
         
         do {
+            error = null;
             String command = this.readCommand(color, playController);
-            origin = Coordinate.origin(command);
-            target = Coordinate.target(command);
-            error = playController.isCorrect(origin, target);
-            if (error == null) 
-                playController.move(origin, target);
-            else
-                this.writeMessageError(error, playController);
+            if (command.equals(CANCEL_COMMAND)) {
+                playController.cancelGame();
+                break;
+            }
+            else {
+                origin = Coordinate.origin(command);
+                target = Coordinate.target(command);
+                error = playController.isCorrect(origin, target);
+                if (error == null) 
+                    playController.move(origin, target);
+                else
+                    this.writeMessageError(error, playController);
+            }
         } while (error != null);
         
         this.evaluateMessageEndGame(playController);
@@ -44,6 +52,9 @@ class PlayView extends WithConsoleView {
         do {
             error = null;
             command = this.console.readString("Mueven las " + color + ": ");
+            if (command.matches(CANCEL_COMMAND)) {
+                break;
+            }
             if (!command.matches(FORMAT_COMMAND)) {
                 error = Error.BAD_FORMAT;
                 writeMessageError(error, playController);

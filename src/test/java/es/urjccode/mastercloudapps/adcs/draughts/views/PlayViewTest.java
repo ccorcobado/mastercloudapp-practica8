@@ -15,6 +15,7 @@ import es.urjccode.mastercloudapps.adcs.draughts.controllers.PlayController;
 import es.urjccode.mastercloudapps.adcs.draughts.models.Color;
 import es.urjccode.mastercloudapps.adcs.draughts.models.Coordinate;
 import es.urjccode.mastercloudapps.adcs.draughts.utils.Console;
+import es.urjccode.mastercloudapps.adcs.draughts.utils.YesNoDialog;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayViewTest {
@@ -31,9 +32,12 @@ public class PlayViewTest {
     @Mock
     ErrorView errorView;
     
-//    @Mock
-//    ColorView colorView;
+    @Mock
+    CancelView cancelView;
 
+    @Mock
+    YesNoDialog yesnoDialog;
+    
     @InjectMocks
     PlayView playView;
 

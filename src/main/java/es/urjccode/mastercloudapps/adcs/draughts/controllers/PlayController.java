@@ -9,8 +9,11 @@ import es.urjccode.mastercloudapps.adcs.draughts.models.Game;
 
 public class PlayController extends Controller {
 
+    private CancelController cancelController;
+    
     public PlayController(Game game, State state) {
         super(game, state);
+        this.cancelController = new CancelController(state);
     }
 
     public void move(Coordinate origin, Coordinate target) {
@@ -40,14 +43,13 @@ public class PlayController extends Controller {
         return this.game.isBlocked();
     }
 
+    public void cancelGame() {
+        this.cancelController.cancelGame();
+    }
+
     @Override
     public void accept(ControllersVisitor controllersVisitor) {
         assert controllersVisitor != null;
         controllersVisitor.visit(this);
     }
-
-    public void cancelGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
