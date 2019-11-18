@@ -22,7 +22,7 @@ public class Game {
     void setBoard(Board board) {
         this.board = board;
     }
-    
+
     void nextTurn() {
         this.turn.change();
     }
@@ -46,7 +46,7 @@ public class Game {
 
     public void move(Coordinate origin, Coordinate target) {
         assert this.isCorrect(origin, target) == null;
-        
+
         Piece piece = this.board.getPiece(origin);
         if (piece.isEatingJump(origin, target)) {
             this.board.remove(piece.betweenDiagonal(origin, target));
@@ -77,7 +77,34 @@ public class Game {
     }
 
     public boolean isBlocked() {
-        return this.board.getPieces(this.turn.getColor()).isEmpty();
+        return this.arePieces(this.turn.getColor()) || !areMovements();
+    }
+
+    private boolean arePieces(Color color) {
+        return this.board.getPieces(color).isEmpty();
+    }
+
+    private boolean areMovements() {
+        for (int i = 0; i < this.board.getDimension(); i++) {
+            for (int j = 0; j < this.getDimension(); j++) {
+                Coordinate coordinate = new Coordinate(i, j);
+                Piece piece = this.getPiece(coordinate);
+                if (piece != null && this.areMovements(coordinate))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean areMovements(Coordinate origin) {
+        for (int i = 0; i < this.board.getDimension(); i++) {
+            for (int j = 0; j < this.getDimension(); j++) {
+                if (isCorrect(origin, new Coordinate(i, j)) == null) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public int getDimension() {
