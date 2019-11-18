@@ -49,7 +49,6 @@ public class Game {
         
         Piece piece = this.board.getPiece(origin);
         if (piece.isEatingJump(origin, target)) {
-            // this.board.remove(origin.betweenDiagonal(target));
             this.board.remove(piece.betweenDiagonal(origin, target));
         }
         this.board.move(origin, target);
